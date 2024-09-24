@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ApiClient from "../service/ApiClient";
 import { CanceledError } from "axios";
 import useData from "./useData";
+import { Genre } from "./useGenre";
 
 export interface Platform {
     name: string,
@@ -25,7 +26,8 @@ interface FetchGameResponse {
 }
 
 
-const useGames = () => useData<Game>('/games');
+const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform| null) => 
+    useData<Game>('/games', {params: {genres: selectedGenre?.id, platforms: selectedPlatform?.id}}, [selectedGenre?.id, selectedPlatform?.id]);
 
 
 export default useGames;
