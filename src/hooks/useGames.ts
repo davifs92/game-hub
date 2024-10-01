@@ -18,7 +18,8 @@ export interface Game {
     rating: number,
     background_image: string,
     metacritic: number
-    parent_platforms: { platform: Platform }[]
+    parent_platforms: { platform: Platform }[],
+    rating_top: number
 }
 
 interface FetchGameResponse {
@@ -31,7 +32,8 @@ const useGames = (gameQuery : GameQuery) =>
     useData<Game>('/games', {params: 
         {genres: gameQuery.genre?.id, 
         platforms: gameQuery.platform?.id,
-        ordering: gameQuery.sortOrder
+        ordering: gameQuery.sortOrder,
+        search: gameQuery.searchInput
     }}, 
         [gameQuery]);
 

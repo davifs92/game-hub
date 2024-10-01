@@ -5,7 +5,6 @@ import useGames, { Platform } from '../../hooks/useGames';
 import GameCard from '../GameCard/GameCard';
 import GameCardSkeleton from '../GameCardSkeleton';
 import GameCardContainer from '../GameCardContainer';
-import { Genre } from '../../hooks/useGenre';
 import { GameQuery } from '../../App';
 
 interface Props {
@@ -17,7 +16,7 @@ const {data, error, isLoading} = useGames(gameQuery);
 const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
-    <SimpleGrid columns={{sm: 1, md: 2, lg: 3, xl: 5}} spacing={3} paddingY={2}>
+    <SimpleGrid columns={{sm: 1, md: 2, lg: 3, xl: 4}} spacing={6} paddingY={2}>
         {error && <Text>error</Text>}
         {isLoading && skeletons.map((s) => <GameCardContainer  key={s}>
           <GameCardSkeleton />
