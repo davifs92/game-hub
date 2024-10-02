@@ -3,6 +3,8 @@ import ApiClient from "../service/ApiClient";
 import { CanceledError } from "axios";
 import useData from "./useData";
 
+import genres from "../data/genres";
+
 export interface Genre {
     id: number, 
     name: string,
@@ -11,6 +13,6 @@ export interface Genre {
 
 
 
-const useGenres = () => useData<Genre>('/genres');
+const useGenres = () => ({data : genres, isLoading: false, error: null})
 
 export default useGenres;
